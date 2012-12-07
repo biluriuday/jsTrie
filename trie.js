@@ -48,7 +48,7 @@ obj = {
 (function(){
 var
 trie=function(arr) {
-	return trie.prototype.init(arr);
+	return new trie.prototype.init(arr);
 };
 
 trie.prototype = {
