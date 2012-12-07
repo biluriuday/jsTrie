@@ -108,6 +108,7 @@ trie.prototype = {
 		return i === wrdArr.length ? buildResultsArray(tmpDictRoot, word): [];
 	}
 };
+trie.prototype.init.prototype=trie.prototype;//jQuery style of declaring prototype chain
 function buildResultsArrayInternal(srchResults, tmpDictRoot, word) {
 	var a;
 	for(a in tmpDictRoot) {
