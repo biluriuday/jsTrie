@@ -6,7 +6,11 @@
 <body>
 <script type="text/javascript">
 (function () {
-	
+	dictionary1 = trie(["uday", "bhaskar", "bharat", "see", "seen", "play", "plague"]);
+	var searchResult1 = dictionary1.searchWords("bha");
+	var searchResult2 = dictionary1.searchWords("pla");
+	console.log("Words starting with bha are " + searchResult1.join());
+	console.log("Words starting with pla are " + searchResult2.join());
 })();
 </script>
 </body>

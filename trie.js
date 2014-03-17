@@ -58,19 +58,19 @@ trie.prototype = {
 			var wrdArr = word.split(''), 
 			i, tmp = this.dict;
 			for(i=0;i<wrdArr.length;i++) {
-				if(tmp[wrdArr[i]] === undefined || tmp[wrdArr[i]] === null) {
+				if(!tmp[wrdArr[i]]) {
 					return false;
 				}
 				tmp = tmp[wrdArr[i]];
 			}
-			return (tmp.$ !== undefined && tmp.$ !== null && tmp.$ === 1) ? true: false;
+			return (tmp.$ && tmp.$ === 1) ? true: false;
 		}
 		return false;
 	},
 	init: function(arr) { //build a trie object(dictionary) from the words in the input array
 		var i;
 		this.dict = {};
-		if(arr !== undefined && arr !== null) {
+		if(arr && arr.length > 0) {
 			for(i=0;i<arr.length;i++) {
 				this.addWordToTrie(arr[i]);
 			}
@@ -81,17 +81,17 @@ trie.prototype = {
 		tmp = this.dict, 
 		chars = word.split(''),
 		idx = 0;
-		if(this.dict === undefined || this.dict === null) {
+		if(!this.dict) {
 			this.dict = {};
 		}
 		while(idx < chars.length) {
-			if(tmp[chars[idx]] === undefined || tmp[chars[idx]] === null) {
+			if(!tmp[chars[idx]]) {
 				tmp[chars[idx]] = {};
 			}
 			tmp = tmp[chars[idx]];
 			idx++;
 		}
-		if(tmp.$ === undefined) {
+		if(!tmp.$) {
 			tmp.$ = 1;
 		}
 	},
@@ -99,7 +99,7 @@ trie.prototype = {
 		////can be used for auto-suggest kind of functionality
 		var wrdArr = word.split(''), i = 0, tmpDictRoot = this.dict;
 		while(i < wrdArr.length) {//we can put a constraint on min search word length(?) if the dictionary is too big
-			if(tmpDictRoot[wrdArr[i]] === null) {
+			if(!tmpDictRoot[wrdArr[i]]) {
 				break;
 			}
 			tmpDictRoot = tmpDictRoot[wrdArr[i]];
